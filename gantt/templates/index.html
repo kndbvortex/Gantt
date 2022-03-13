@@ -1,0 +1,98 @@
+{% load static %}
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Home</title>
+</head>
+
+<body>
+    <nav class="bg-myblack navbar-default flex">
+        <div class="">
+            <a class="" href="#"></a>
+        </div>
+        <div class="navigation">
+            <a href="#">Home</a>
+            <a href="#presentation">Présentation</a>
+            <a href="#">Pricing</a>
+            <a href="#">Disabled</a>
+        </div>
+    </nav>
+    <div class="hero-image">
+        <div class="hero-text">
+            <h1>Plannifie ton projet</h1>
+            <h3>En réalisant un diagramme de GANTT</h3>
+            <button class="btn"><a href="#main-content">Commencer</a></button>
+        </div>
+    </div>
+
+    <main class="container">
+        <section class="presentation" id="presentation">
+            <h1>Présentation</h1>
+            <div class="presentation-body">
+                <p class="text-description">Le diagramme de Gantt, couramment utilisé en gestion de projet, est l'un des outils les plus
+                    efficaces
+                    pour
+                    représenter visuellement l'état d'avancement des différentes activités (tâches) qui constituent un
+                    projet.
+                    La colonne de gauche du diagramme énumère toutes les tâches à effectuer, tandis que la ligne
+                    d'en-tête
+                    représente les unités de temps les plus adaptées au projet (jours, semaines, mois etc.). Chaque
+                    tâche
+                    est
+                    matérialisée par une barre horizontale, dont la position et la longueur représentent la date de
+                    début,
+                    la
+                    durée et la date de fin. Ce diagramme permet donc  d'identifier rapidement: la date de début et la date de fin de chaque tâche,
+                    la durée escomptée de chaque tâche, le chevauchement éventuel des tâches, et la durée de ce chevauchement
+                    La date de début et la date de fin du projet dans son ensemble.</p>
+                <div class="image"></div>
+            </div>
+
+        </section>
+        <section class="flex main-content" id="main-content">
+            <div class="uploader">
+                <form method="post" action="{% url "draw-gantt" %}" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+                    <div class="file-upload">
+                        <button class="file-upload-btn" type="button" 
+                            onclick="$('.file-upload-input').trigger( 'click' )">Add file</button>
+
+                        <div class="image-upload-wrap">
+                            <input class="file-upload-input" type='file' onchange="readURL(this);"
+                                accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name='tasks' required/>
+                            <div class="drag-text">
+                                <h3>Glisser déposer votre fichier</h3>
+                            </div>
+                        </div>
+                        <div class="file-upload-content">
+                            <img class="file-upload-image" src="#" alt="your image" />
+                            <div class="image-title-wrap">
+                                <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
+                                        class="image-title">Uploaded File</span></button>
+                            </div>
+                        </div>
+                        <input class="btn" width="300px" type="submit" value="Générer">
+                    </div>
+                </form>
+            </div>
+            <div class="tuto">
+                <p>Le fichier excel à importer devra contenir 4 colonnes: la première le code de la tâche, la deuxième le libele de la tâche, la troisième la durée de chaque tâche et la dernière les précédences de chacune des tâches. De la même façon que vous pouvez le voir ci-dessous</p>
+                <img src="{% static 'images/example-file.png' %}" width="100%" />   
+            </div>
+        </section>
+    </main>
+    <footer>
+
+    </footer>
+    <script>
+
+</body>
+
+</html>

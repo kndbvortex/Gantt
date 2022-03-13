@@ -1,0 +1,306 @@
+:root {
+  --black: #181a19;
+  --white: white;
+  --brown: #8c5d49;
+}
+
+@import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@100&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+.bg-myblack {
+  background-color: var(--black);
+  color: var(--brown);
+}
+
+.navbar-default {
+  padding: 10px;
+  height: 10vh;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  color: var(--white);
+}
+
+nav a {
+  opacity: 70%;
+}
+nav a:hover {
+  opacity: 150%;
+  color: var(--brown);
+}
+.navigation {
+  min-width: 30vw;
+  display: flex;
+  justify-content: space-between;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.container-fluid {
+  width: 100%;
+  margin: auto;
+}
+
+.container {
+  width: 90%;
+  margin: auto;
+}
+
+.hero-image {
+  background-image: url("/static/images/banner.png");
+
+  height: 90vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-text h1 {
+  font-family: "Roboto", sans-serif;
+  font-size: 6em;
+  width: 100%;
+}
+.hero-text h3 {
+  font-family: "Roboto", sans-serif;
+  font-size: 2.3em;
+  width: 100%;
+}
+
+.hero-text a {
+  font-family: "Roboto light", sans-serif;
+  font-size: 2em;
+  width: 100%;
+  color: var(--white);
+}
+
+.hero-text {
+  width: 70%;
+  -webkit-text-stroke: 1px var(--black);
+  text-align: left;
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -40%);
+  color: var(--white);
+}
+
+.hero-text .btn {
+  margin-top: 1%;
+  background: var(--black);
+  border: 6px solid #f2f2f2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 250px;
+  height: 70px;
+}
+
+.btn {
+  margin-top: 1%;
+  background: var(--black);
+  border: 3px solid #f2f2f2;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 150px;
+  height: 60px;
+  font-size: 1em;
+  color: var(--white);
+}
+
+.hero-text .btn:hover {
+  background: #f2f2f2;
+  border: 6px solid var(--brown);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: var(--brown) !important;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+main {
+  margin-top: 100px !important;
+  font-size: 1.5em;
+}
+
+.presentation h1 {
+  font-size: 2em !important;
+  text-align: center !important;
+  margin: 20px;
+  color: var(--brown);
+  font-weight: bold;
+}
+
+.presentation {
+  margin: auto;
+}
+.text-description {
+  width: 70%;
+  text-align: right;
+  padding: 10px;
+}
+
+.presentation-body{
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+.image {
+  background-image: url("/static/images/gantt.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50% !important;
+  height: 60vh;
+}
+
+.main-content{
+
+    display: flex;
+    flex-direction:row-reverse;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.tuto{
+    width: 50%;
+}
+
+.file-upload {
+  background-color: #ffffff;
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+
+.file-upload-btn {
+  width: 100%;
+  margin: 0;
+  color: #fff;
+  background: var(--brown);
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid var(--black);
+  transition: all 0.2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.file-upload-btn:hover {
+  background: var(--white);
+  color: var(--brown);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  border: 2px solid var(--brown);
+}
+
+.file-upload-btn:active {
+  border: 0;
+  transition: all 0.2s ease;
+}
+
+.file-upload-content {
+  display: none;
+  text-align: center;
+}
+
+.file-upload-input {
+  position: absolute;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  outline: none;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.image-upload-wrap {
+  margin-top: 20px;
+  border: 4px dashed var(--brown);
+  position: relative;
+}
+
+.image-dropping,
+.image-upload-wrap:hover {
+  border: 4px solid var(--brown);
+}
+
+.image-title-wrap {
+  padding: 0 15px 15px 15px;
+  color: #222;
+}
+
+.drag-text {
+  text-align: center;
+}
+
+.drag-text h3 {
+  font-weight: 100;
+  text-transform: uppercase;
+  color: var(--brown);
+  padding: 60px 0;
+}
+
+.file-upload-image {
+  max-height: 200px;
+  max-width: 200px;
+  margin: auto;
+  padding: 20px;
+}
+
+.remove-image {
+  width: 200px;
+  margin: 0;
+  color: #fff;
+  background: #cd4535;
+  border: none;
+  padding: 10px;
+  border-radius: 4px;
+  border-bottom: 4px solid #b02818;
+  transition: all 0.2s ease;
+  outline: none;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+
+.remove-image:hover {
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.remove-image:active {
+  border: 0;
+  transition: all 0.2s ease;
+}
+
+footer{
+    background-color: var(--black);
+    color: var(--white);
+    height: 20vh;
+}
