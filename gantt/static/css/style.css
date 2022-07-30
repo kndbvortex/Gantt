@@ -9,6 +9,7 @@
 * {
   margin: 0;
   padding: 0;
+  font-size: 0.9em;
 }
 
 body,
@@ -38,17 +39,18 @@ a:active {
   font-family: "Roboto", sans-serif;
   font-size: 1.2em;
   color: var(--white);
+  background-color: var(--black);
 }
 
-nav a {
-  opacity: 70%;
+.nav_link {
+  font-size: 1.2em;
 }
-nav a:hover {
-  opacity: 150%;
+.nav_link:hover {
+  opacity: 150% !important;
   color: var(--brown);
 }
 .navigation {
-  min-width: 30vw;
+  min-width: 30vw !important;
   display: flex;
   justify-content: space-between;
 }
@@ -131,10 +133,10 @@ nav a:hover {
 }
 
 .hero-text .btn:hover {
-  background: #f2f2f2;
+  background: #f2f2f2 !important;
   border: 6px solid var(--brown);
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  color: var(--brown) !important;
+  color: var(--brown);
   font-weight: bold;
   cursor: pointer;
 }
@@ -154,6 +156,7 @@ main {
 
 .presentation {
   margin: auto;
+  font-size: 1em;
 }
 .text-description {
   width: 70%;
@@ -161,10 +164,11 @@ main {
   padding: 10px;
 }
 
-.presentation-body{
-    display: flex;
-    flex-direction: row-reverse;
-    align-items: center;
+.presentation-body {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  font-size: 0.8em;
 }
 
 .image {
@@ -176,16 +180,16 @@ main {
   height: 60vh;
 }
 
-.main-content{
-
-    display: flex;
-    flex-direction:row-reverse;
-    align-items: center;
-    margin-top: 30px;
+.main-content {
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: center;
+  margin-top: 30px;
 }
 
-.tuto{
-    width: 50%;
+.tuto {
+  text-indent: 8%;
+  width: 50%;
 }
 
 .file-upload {
@@ -194,7 +198,6 @@ main {
   margin: 0 auto;
   padding: 20px;
 }
-
 
 .file-upload-btn {
   width: 100%;
@@ -299,8 +302,37 @@ main {
   transition: all 0.2s ease;
 }
 
-footer{
-    background-color: var(--black);
+footer {
+  background-color: var(--black);
+  color: var(--white);
+  height: 20vh;
+}
+
+@media only screen and (max-width: 600px) {
+  .hero-text h1 {
+    font-size: 3em;
+  }
+  .hero-text h3 {
+    font-family: "Roboto", sans-serif;
+    font-size: 2em;
+    width: 100%;
+  }
+
+  .hero-text {
+    width: 70%;
+    -webkit-text-stroke: 1px var(--black);
+    text-align: left;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -40%);
     color: var(--white);
-    height: 20vh;
+  }
+  .presentation h1 {
+    font-size: 1.3em !important;
+    margin: 10px;
+  }
+  .hero-image {
+    height: 70vh;
+  }
 }
