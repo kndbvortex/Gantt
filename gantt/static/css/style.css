@@ -292,6 +292,11 @@ main {
   font-weight: 700;
 }
 
+.form-select:focus{
+  border: 1px solid var(--black) !important;
+  box-shadow: 3px 3px var(--brown) !important;
+}
+
 .remove-image:hover {
   transition: all 0.2s ease;
   cursor: pointer;
@@ -304,8 +309,13 @@ main {
 
 footer {
   background-color: var(--black);
+  padding: 10px;
   color: var(--white);
-  height: 20vh;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 @media only screen and (max-width: 600px) {

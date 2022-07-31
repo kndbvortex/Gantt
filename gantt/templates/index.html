@@ -39,16 +39,17 @@
     <div class="hero-image">
         <div class="hero-text">
             <h1>Plannifie ton projet</h1>
-            <h3>En réalisant un diagramme de GANTT</h3>
+            <h3>En réalisant un diagramme de <strong>GANTT</strong></h3>
             <button class="btn"><a href="#main-content">Commencer</a></button>
         </div>
     </div>
 
     <main class="container">
         <section class="presentation" id="presentation">
-            <h1>C'est quoi un diagramme de GANTT?</h1>
+            <h1>C'est quoi un diagramme de <strong>GANTT</strong>?</h1>
             <div class="presentation-body">
-                <p style="text-indent:8%;">Le diagramme de Gantt, couramment utilisé en gestion de projet, est l'un des
+                <p style="text-indent:8%;">Le diagramme de <strong>Gantt</strong>, couramment utilisé en gestion de
+                    projet, est l'un des
                     outils les plus
                     efficaces
                     pour
@@ -71,39 +72,46 @@
             </div>
 
         </section>
-        
+
         <section class="presentation my-3">
-            <h1>Création</h1>
+            <h1>Créer votre diagramme de <strong>GANTT</strong></h1>
             <div class="d-md-flex">
-                <div class="col-12 col-md-6">
+                <div class="col-12 col-md-5">
                     <p style="text-indent:12%;">Le fichier excel à importer devra contenir 4 colonnes: la
                         première le code de la tâche, la deuxième
                         le libele de la tâche, la troisième la durée de chaque tâche et la dernière les précédences de
                         chacune des tâches. De la même façon que vous pouvez le voir ci-dessous</p>
                     <img src="{% static 'images/example-file.png' %}" width="100%" />
                 </div>
-                <div class="d-flex col-12 col-md-6" id="main-content">
+                <div class="d-flex col-12 col-md-6 m-auto" id="main-content">
                     <div class="uploader">
-                        <form method="post" action="{% url "draw-gantt" %}" enctype="multipart/form-data">
+                        <form method="post" action="#result" enctype="multipart/form-data">
                             {% csrf_token %}
-                            <script class="jsbin" src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
                             <div class="file-upload">
-                                <button class="file-upload-btn" type="button" onclick="$('.file-upload-input').trigger( 'click' )">Add
+                                <label for="unit">Unité de la durée d'une tâche</label>
+                                <select class="form-select mb-3"  name="unit">
+                                    <option value="1">Jour</option>
+                                    <option value="2">Mois</option>
+                                    <option value="3">Année</option>
+                                </select>
+                                <label for="start">Date de début:</label>
+                                
+                                <input type="date" id="start" name="date">
+                            </div>
+
+                            <script class="jsbin"
+                                src="https://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+                            <div class="file-upload">
+                                <button class="file-upload-btn" type="button"
+                                    onclick="$('.file-upload-input').trigger( 'click' )">Add
                                     file</button>
-                
+
                                 <div class="image-upload-wrap">
                                     <input class="file-upload-input" type='file' onchange="readURL(this);"
-                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name='tasks'
-                                        required />
+                                        accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+                                        name='tasks' required />
                                     <div class="drag-text">
                                         <h3>Glisser déposer votre fichier</h3>
-                                    </div>
-                                </div>
-                                <div class="file-upload-content">
-                                    <img class="file-upload-image" src="#" alt="your image" />
-                                    <div class="image-title-wrap">
-                                        <button type="button" onclick="removeUpload()" class="remove-image">Remove <span
-                                                class="image-title">Uploaded File</span></button>
                                     </div>
                                 </div>
                                 <input class="btn" width="300px" type="submit" value="Générer">
@@ -112,12 +120,43 @@
                     </div>
                 </div>
             </div>
-            
-        </section>
-        
-    </main>
-    <footer>
 
+        </section>
+        {% if print_diagram %}
+            <section class="text-danger h1" id="result">
+                {{ message }}
+                <span class="text-dark">Pour plus de détail bien vouloir consulter le diagramme et le tableau ci-après</span>
+            </section>
+            <canvas id="myChart" width="400" height="400"></canvas>
+            <table class="table table-striped caption-top">
+                <caption>Récapitulatif</caption>
+                <thead>
+                    <tr>
+                    <th scope="col">tache</th>
+                    <th scope="col">Date de début</th>
+                    <th scope="col">Date de fin</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for label, debut, fin in intervales_date %}
+                        <tr>
+                            <td>{{ label }}</td>
+                            <td>{{ debut }}</td>
+                            <td>{{ fin }}</td>
+                        </tr>
+                    
+                    {% endfor %}
+                    
+                </tbody>
+            </table>
+        {% endif %}
+
+
+    </main>
+    <footer id="contact">
+        <p>Email : <a href="mailto:kamganguifo@gmail.com"></a>kamganguifo@gmail.com</p>
+        <p>Téléphone : <a href="tel:+237 655303793"></a>+237 655303793</p>
+        <p>Github : <a class="text-primary" href="https://github.com/kndbvortex">https://github.com/kndbvortex</a></p>
     </footer>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"
         integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p"
@@ -125,6 +164,115 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js"
         integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF"
         crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.8.2/dist/chart.min.js"
+        integrity="sha256-srZ7wC4CLlY0F9UFji68dTwYJQ5o93Quq2+iyQ4gH/I=" crossorigin="anonymous"></script>
+    <script>
+        // function numbers(config) {
+        //     var cfg = config || {};
+        //     var min = cfg.min ||  0;
+        //     var max = cfg.max || 100;
+        //     var from = cfg.from || [];
+        //     var count = cfg.count || 8;
+        //     var decimals = cfg.decimals || 8;
+        //     var continuity = cfg.continuity || 1;
+        //     var dfactor = Math.pow(10, decimals) || 0;
+        //     var data = [];
+        //     var i, value;
+        //     console.log('count', count)
+        //     for (i = 0; i < count; ++i) {
+        //         value = (from[i] || 0) + Math.floor(Math.random() * (max - min)) + min;
+        //         if (Math.floor(Math.random() * (max - min)) + min <= continuity) {
+        //             data.push(-30);
+        //         } else {
+        //             data.push(20);
+        //         }
+        //     }
+        //     console.log("data in function", data);
+        //     return data;
+        // }
+        // const MONTHS = [
+        //     'January',
+        //     'February',
+        //     'March',
+        //     'April',
+        //     'May',
+        //     'June',
+        //     'July',
+        //     'August',
+        //     'September',
+        //     'October',
+        //     'November',
+        //     'December'
+        // ];
+
+        // function months(config) {
+        //     var cfg = config || {};
+        //     var count = cfg.count || 12;
+        //     var section = cfg.section;
+        //     var values = [];
+        //     var i, value;
+
+        //     for (i = 0; i < count; ++i) {
+        //         value = MONTHS[Math.ceil(i) % 12];
+        //         values.push(value.substring(0, section));
+        //     }
+
+        //     return values;
+        // }
+        // const DATA_COUNT = 4;
+        // const NUMBER_CFG = { count: DATA_COUNT, min: -100, max: 100 };
+
+        // const labels = months({ count: DATA_COUNT });
+        // const data1 = [50, 80, 120, 150];
+        // const start = [0, 20, 30, 40];
+        // const end = [40, 50, 70, 60];
+
+        // const min = 0;
+        // const max = 100;
+        console.log({{intervales|safe}}.map((e) => [new Date(e[0]), new Date(e[1])]))
+        {% if print_diagram %}
+            const data = {
+                labels: {{labels|safe}},
+                datasets: [
+                    {
+                        label: 'Gantt',
+                        data: {{intervales|safe}},
+                        backgroundColor:  {{couleurs|safe}},
+                    },
+
+                    ]
+            };
+            const config = {
+                type: 'bar',
+                data: data,
+                options: {
+                    indexAxis: 'y',
+                    // Elements options apply to all of the options unless overridden in a dataset
+                    // In this case, we are setting the border of each horizontal bar to be 2px wide
+                    elements: {
+                        bar: {
+                            borderWidth: 2,
+                        }
+                    },
+                    responsive: true,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                        },
+                        title: {
+                            display: true,
+                            text: 'Diagramme de Gantt'
+                        }
+                    }
+                },
+            };
+            const myChart = new Chart(
+                document.getElementById('myChart'),
+                config
+            );
+        {% endif %}
+        
+    </script>
 
 </body>
 
