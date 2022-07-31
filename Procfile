@@ -1,0 +1,1 @@
+web: gunicorn gantt.wsgi
