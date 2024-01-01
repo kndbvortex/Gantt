@@ -1,0 +1,168 @@
+:root {
+  --black: #181a19;
+  --white: white;
+  --brown: #8c5d49;
+}
+
+/* @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@100&display=swap"); */
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+
+.navbar-default {
+  padding: 10px;
+  height: 10vh;
+  margin: auto;
+  justify-content: space-between;
+  align-items: center;
+  font-family: "Roboto", sans-serif;
+  font-size: 1.2em;
+  color: var(--white);
+  background-color: var(--black);
+}
+
+.nav_link {
+  font-size: 1.2em;
+}
+
+.nav_link:hover {
+  opacity: 150% !important;
+  color: var(--brown);
+}
+
+.navigation {
+  min-width: 30vw !important;
+  display: flex;
+  justify-content: space-between;
+};
+
+.justify-content-between {
+  justify-content: space-between;
+}
+
+.flex {
+  display: flex;
+}
+
+.hero-image {
+  background-image: url("/static/images/banner.png");
+
+  height: 90vh;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hero-text h1 {
+  /* font-family: "Roboto", sans-serif; */
+  font-size: 6em;
+  width: 100%;
+}
+.hero-text h3 {
+  /* font-family: "Roboto", sans-serif; */
+  font-size: 2.3em;
+  width: 100%;
+}
+
+.hero-text a {
+  /* font-family: "Roboto light", sans-serif; */
+  font-size: 2em;
+  width: 100%;
+  color: var(--white);
+}
+
+.hero-text .btn {
+  margin-top: 1%;
+  /* background: var(--black); */
+  /* border: 6px solid #f2f2f2; */
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+  width: 250px;
+  height: 70px;
+}
+
+
+main {
+  margin-top: 60px !important;
+  font-size: 1.1em;
+}
+
+.presentation h1 {
+  font-size: 2em !important;
+  /* text-align: center !important; */
+  margin-bottom: 20px;
+  color: var(--brown);
+  font-weight: bold;
+}
+
+.text-description {
+  width: 70%;
+  text-align: right;
+  /* padding: 10px; */
+}
+
+.presentation-body {
+  display: flex;
+  flex-direction: row-reverse;
+  /* align-items: center; */
+  /* font-size: 0.8em; */
+}
+
+.image {
+  background-image: url("/static/images/gantt.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 50% !important;
+  height: 60vh;
+}
+
+.tuto {
+  text-indent: 8%;
+  width: 50%;
+}
+
+
+.form-select:focus{
+  border: 1px solid var(--black) !important;
+  box-shadow: 3px 3px var(--brown) !important;
+}
+
+
+footer {
+  background-color: var(--black);
+  padding: 10px;
+  color: var(--white);
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+  .hero-text h1 {
+    font-size: 3em;
+  }
+  .hero-text h3 {
+    /* font-family: "Roboto", sans-serif; */
+    font-size: 2em;
+    width: 100%;
+  }
+
+  .presentation h1 {
+    font-size: 1.3em !important;
+    margin: 10px;
+  }
+  .hero-image {
+    height: 70vh;
+  }
+}
