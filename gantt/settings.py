@@ -27,7 +27,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY',  'k*w08549t#cws@)2jc7s@xwcb7+18m#@@99l
 print(os.environ.get('DEBUG', True))
 DEBUG = True
 
-ALLOWED_HOSTS = ["192.168.80.185", "127.0.0.1"]
+ALLOWED_HOSTS = ["192.168.80.185", "127.0.0.1", ".vercel.app"]
 
 
 # Application definition
