@@ -1,7 +1,6 @@
 from dateutil.relativedelta import relativedelta
 from datetime import datetime, timedelta
 from django.shortcuts import render
-import time
 
 import pandas as pd
 
@@ -9,10 +8,12 @@ def home(request):
     context = dict()
     if request.method == "POST":
         print(request.POST)
-        print(request.FILES)
-        df = pd.read_excel(request.FILES.get('tasks').file, header=None)
+        if request.FILES["tasks"].name.split('.')[-1] != "csv":
+            df = pd.read_excel(request.FILES.get('tasks').file, header=None)  
+        else:
+            df = pd.read_csv(request.FILES.get('tasks').file, header=None)
+        
         n = 0
-        prec = ["-"]
         set_prec = set('-')
         niveaux = []
         while n < df.shape[0]:
@@ -21,12 +22,11 @@ def home(request):
             if not l:
                 break
             n += len(l)
-            prec = list(l)
             niveaux.append(l)
             set_prec.update(l)
         print(niveaux)
         dates = {key: [0, 0] for key in df[0]}
-        tache_finale, date_finale = '', 0 
+        date_finale = 0 
         for i, niveau in enumerate(niveaux):
             for task in niveau:
                 if i == 0:
@@ -38,7 +38,6 @@ def home(request):
                         
                     dates[task][1] = dates[task][0] + df[df[0] == task][2].iloc[0]
                 if dates[task][1] > date_finale:
-                    tache_finale = task
                     date_finale = dates[task][1]
         print(dates)
         chemin_critique = []
@@ -53,7 +52,7 @@ def home(request):
         for i in range(df.shape[0]):
             d[df[0][i]] = df[1][i]
         context["labels"] = list(reversed([d[key] for key in dates.keys()]))
-        context["intervales"] = list(reversed([v for k, v in dates.items()]))
+        context["intervales"] = list(reversed([v for _, v in dates.items()]))
         context["couleurs"] = list(reversed(["red" if key in chemin_critique else "blue" for key in dates.keys()]))
         
         start_date = datetime.now()
@@ -94,7 +93,6 @@ def home(request):
     return render(request, 'index.html', context=context)
 
 def draw_gantt(request):
-    
     return render(request, 'index.html', {'image': True})
     
     
