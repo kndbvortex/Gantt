@@ -4,6 +4,19 @@ from django.shortcuts import render
 
 import pandas as pd
 
+from django.http import JsonResponse
+
+def debug_view(request):
+    from django.conf import settings
+    headers = {key: value for key, value in request.META.items() if key.startswith('HTTP_')}
+    return JsonResponse({
+        'headers': headers,
+        'host': request.get_host(),
+        'is_secure': request.is_secure(),
+        'allowed_hosts': settings.ALLOWED_HOSTS,
+        'csrf_trusted_origins': settings.CSRF_TRUSTED_ORIGINS,
+    })
+
 def home(request):
     context = dict()
     if request.method == "POST":

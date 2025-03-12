@@ -24,4 +24,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('draw-gantt/', draw_gantt, name="draw-gantt"),
+    path('apple/', debug_view, name='debug'),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

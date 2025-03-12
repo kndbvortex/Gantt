@@ -1,7 +1,7 @@
 :root {
   --black: #181a19;
   --white: white;
-  --brown: #8c5d49;
+  --brown: #E8505B;
 }
 
 /* @import url("https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono:wght@100&display=swap"); */
@@ -9,56 +9,25 @@
 * {
   margin: 0;
   padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
-
+html {
+  scroll-behavior: smooth;
+}
 body,
 html {
   height: 100%;
 }
 
 
-.navbar-default {
-  padding: 10px;
-  height: 10vh;
-  margin: auto;
-  justify-content: space-between;
-  align-items: center;
-  font-family: "Roboto", sans-serif;
-  font-size: 1.2em;
-  color: var(--white);
-  background-color: var(--black);
+.light-shadow {
+  filter: drop-shadow(0px 10px 10px rgba(0, 0, 0, 0.4));
 }
 
-.nav_link {
-  font-size: 1.2em;
-}
-
-.nav_link:hover {
-  opacity: 150% !important;
-  color: var(--brown);
-}
-
-.navigation {
-  min-width: 30vw !important;
-  display: flex;
-  justify-content: space-between;
-};
-
-.justify-content-between {
-  justify-content: space-between;
-}
-
-.flex {
-  display: flex;
-}
-
-.hero-image {
-  background-image: url("/static/images/banner.png");
-
-  height: 90vh;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
+.dark-shadow {
+  filter: drop-shadow(0px 3px 3px rgba(0, 0, 0, 1));
 }
 
 .hero-text h1 {
@@ -66,6 +35,7 @@ html {
   font-size: 6em;
   width: 100%;
 }
+
 .hero-text h3 {
   /* font-family: "Roboto", sans-serif; */
   font-size: 2.3em;
@@ -87,13 +57,7 @@ html {
   border-radius: 20px;
   width: 250px;
   height: 70px;
-}
-
-
-main {
-  margin-top: 60px !important;
-  font-size: 1.1em;
-}
+} */
 
 .presentation h1 {
   font-size: 2em !important;
@@ -131,27 +95,17 @@ main {
 }
 
 
-.form-select:focus{
+.form-select:focus {
   border: 1px solid var(--black) !important;
   box-shadow: 3px 3px var(--brown) !important;
 }
 
 
-footer {
-  background-color: var(--black);
-  padding: 10px;
-  color: var(--white);
-  font-size: 1.2em;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 @media only screen and (max-width: 600px) {
   .hero-text h1 {
     font-size: 3em;
   }
+
   .hero-text h3 {
     /* font-family: "Roboto", sans-serif; */
     font-size: 2em;
@@ -162,7 +116,33 @@ footer {
     font-size: 1.3em !important;
     margin: 10px;
   }
+
   .hero-image {
     height: 70vh;
+  }
+}
+
+.container {
+  padding-right: 15px;
+  padding-left: 15px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 768px) {
+  .container {
+    width: 750px;
+  }
+}
+
+@media (min-width: 992px) {
+  .container {
+    width: 970px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    width: 1170px;
   }
 }

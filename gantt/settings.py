@@ -26,7 +26,19 @@ SECRET_KEY = os.environ.get('SECRET_KEY',  'k*w08549t#cws@)2jc7s@xwcb7+18m#@@99l
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', True)
 
-ALLOWED_HOSTS = ["192.168.80.185", "127.0.0.1", ".vercel.app"]
+ALLOWED_HOSTS = ["gantt.kndbvortex.cloud", 'localhost']
+
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+CSRF_TRUSTED_ORIGINS = [
+    'https://gantt.kndbvortex.cloud',
+    'http://gantt.kndbvortex.cloud',
+    'http://gantt.kndbvortex.cloud:8000',
+]
+
+CSRF_COOKIE_SAMESITE = 'Lax'
+SESSION_COOKIE_SAMESITE = 'Lax'
+
 
 
 # Application definition

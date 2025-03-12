@@ -1,0 +1,28 @@
+version: '3'
+services:
+  gantt:
+    build: .  
+    restart: always
+    volumes:
+      - staticfiles:/app/staticfiles
+    ports:
+      - '8001:8001'
+    networks:
+      - web
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.gantt.rule=Host(`gantt.kndbvortex.cloud`)"
+      - "traefik.http.routers.gantt.entrypoints=websecure"
+      - "traefik.http.routers.gantt.tls.certresolver=letsencrypt"
+      # Redirect HTTP to HTTPS
+      - "traefik.http.routers.gantt-http.rule=Host(`gantt.kndbvortex.cloud`)"
+      - "traefik.http.routers.gantt-http.entrypoints=web"
+      - "traefik.http.routers.gantt-http.middlewares=redirect-to-https@docker"
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+    
+
+networks:
+  web:
+    external: true
+volumes:
+  staticfiles:
